@@ -1,6 +1,9 @@
 const { Wechaty } = require('wechaty')
 
-const bot = new Wechaty()
+const bot = new Wechaty({
+    name : 'ding-dong-bot',
+    profile : 'yes',
+})
 
 bot.on('scan',    onScan)
 bot.on('login',   onLogin)

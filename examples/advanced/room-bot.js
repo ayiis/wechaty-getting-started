@@ -81,7 +81,10 @@ Please wait... I'm trying to login in...
 
 `
 console.log(welcome)
-const bot = Wechaty.instance({ profile: config.default.DEFAULT_PROFILE })
+const bot = Wechaty.instance({
+    name : 'ding-dong-bot',
+    profile : 'yes'
+})
 
 bot
 .on('scan', (qrcode, status) => {
