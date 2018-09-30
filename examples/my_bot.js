@@ -1,5 +1,6 @@
 const ws_srv = require('./websocket.js');
 const room_manage = require('./room_manage.js');
+const friend_manage = require('./friend_manage.js');
 
 const { Wechaty } = require('wechaty')
 
@@ -14,6 +15,7 @@ bot.on('logout',  onLogout)
 bot.on('message', onMessage)
 
 room_manage.initRoom(bot);
+friend_manage.initFriendship(bot);
 ws_srv.set_setting({
     "bot": bot,
 });

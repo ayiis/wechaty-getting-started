@@ -22,6 +22,31 @@ async function roomJoin(room, inviteeList, inviter){
     )
     console.log('bot room-join room id:', room.id)
     await room.say(`welcome to "${topic}"!`, inviteeList[0]);
+
+    // const room = msg.room();
+    // const from = msg.from();
+    // const to = msg.to();
+    // const text = msg.text();
+
+    let message_data = {
+        "type": "room-join",
+        "ts": new Date().getTime() / 1000,
+        "data": {
+            "from_nick": from && from.name(),
+            "from": from && from.id,
+            "to_nick": to && to.name(),
+            "to": to && to.id,
+            "text": "",
+            "room": room.id,
+            "type": msg.type(),
+            "self": msg.self(),
+            "mentionSelf": msg.mentionSelf(),
+            "age": msg.age(),
+            "date": msg.date(),
+        }
+    }
+    ws_srv.broadcast(JSON.stringify(message_data));
+
     ws_srv.broadcast(`EVENT: room-join - Room ${topic} got new member ${inviteeListName}, invited by ${inviterName}`)
 }
 
